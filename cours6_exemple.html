@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        form {
+            margin: auto;
+            max-width: 300px;
+            margin-top: 40px;
+        }
+        
+        .result {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form-to-check">
+        <p>
+            <label>Code : <input type="text" name="code" id="code" /></label><br />
+            <div class="result" id="code-validation"></div>
+        </p>
+        <p>
+            <label>Email : <input type="email" name="email" required /></label>
+        </p>
+        <p>
+            <input type="submit" value="Vérifier" id="submit-btn" />
+        </p>
+    </form>
+
+</body>
+
+<script>
+    function getCodeValidation() {
+        return document.getElementById("code-validation");
+    }
+
+    function disableSubmit(disabled) {
+        if (disabled) {
+            document
+                .getElementById("submit-btn")
+                .setAttribute("disabled", true);
+        } else {
+            document
+                .getElementById("submit-btn")
+                .removeAttribute("disabled");
+        }
+    }
+
+    document
+        .getElementById("code")
+        .addEventListener("input", function(e) {
+            if (/^CODE-/.test(e.target.value)) {
+                getCodeValidation().innerText = "Code valide";
+                disableSubmit(false);
+            } else {
+                getCodeValidation().innerText = "Code invalide";
+                disableSubmit(true);
+            }
+        });
+</script>
+
+</html>

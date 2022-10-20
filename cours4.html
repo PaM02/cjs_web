@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input placeholder="Enter some text" name="name" />
+    <p id="values"></p>
+
+    <label>Choose an ice cream flavor:
+        <select class="ice-cream" name="ice-cream">
+          <option value="">Select One …</option>
+          <option value="chocolate">Chocolate</option>
+          <option value="sardine">Sardine</option>
+          <option value="vanilla">Vanilla</option>
+        </select>
+      </label>
+
+    <div class="result"></div>
+</body>
+
+<script>
+    const input = document.querySelector('input');
+    const log = document.getElementById('values');
+
+    input.addEventListener('input', updateValue);
+
+    function updateValue(e) {
+        log.textContent = e.target.value;
+    }
+
+
+    const selectElement = document.querySelector('.ice-cream');
+
+    selectElement.addEventListener('change', (event) => {
+        const result = document.querySelector('.result');
+        result.textContent = `You like ${event.target.value}`;
+    });
+</script>
+
+</html>

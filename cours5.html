@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #ask-hello {
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        #hello-result {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="base.css">
+    </head>
+
+    <body>
+        <div><button id="ask-hello">Bien le bonjour</button></div>
+        <div id="hello-result"></div>
+        <input type="number" name="" id="" step="5">
+
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+
+    </html>
+
+
+</body>
+
+<script>
+    /*     L’API Fetch  va nous permettre d'exécuter des requêtes HTTP sans avoir besoin de recharger la page du navigateur */
+    fetch("https: //mockbin.com/request")
+        .then(function(res) {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(function(value) {
+            console.log(value);
+        })
+        .catch(function(err) {
+            // Une erreur est survenue
+        });
+
+
+    /* exercice */
+
+    function askHello() {
+        fetch("https://mockbin.com/request?greetings=salut")
+            .then(function(res) {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then(function(value) {
+                document
+                    .getElementById("hello-result")
+                    .innerText = value.queryString.greetings;
+            })
+            .catch(function(err) {
+                // Une erreur est survenue
+            });
+    }
+
+    document
+        .getElementById("ask-hello")
+        .addEventListener("click", askHello);
+
+
+    /*formatJsonretour
+            {
+          "queryString": {
+                "greetings": "Salut",
+                ...
+          },
+          ...
+    } */
+</script>
+
+</html>

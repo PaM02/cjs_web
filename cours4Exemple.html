@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+        
+        form,
+        #result {
+            margin: auto;
+            margin-bottom: 20px;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+        
+        span {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div><input type="text" id="name" placeholder="Nom" /></div>
+        <div>
+            <select id="gender">
+            <option>Choisissez une valeur</option>
+            <option value="male">Homme</option>
+            <option value="female">Femme</option>
+            <option value="other">Autre</option>
+          </select>
+        </div>
+    </form>
+
+    <div id="result">
+        Nom : <span id="res-name"></span><br /> Genre : <span id="res-gender"></span><br /> Souris : (<span id="mouse-x"></span>, <span id="mouse-y"></span>)
+    </div>
+
+</body>
+
+<script>
+    document
+        .getElementById("name")
+        .addEventListener("input", function(e) {
+            document
+                .getElementById("res-name")
+                .innerText = e.target.value;
+        });
+
+    document
+        .getElementById("gender")
+        .addEventListener("change", function(e) {
+            document
+                .getElementById("res-gender")
+                .innerText = e.target.value;
+        });
+
+    document
+        .getElementById("result")
+        .addEventListener("mousemove", function(e) {
+            document
+                .getElementById("mouse-x")
+                .innerText = e.offsetX;
+            document
+                .getElementById("mouse-y")
+                .innerText = e.offsetY;
+        });
+</script>
+
+</html>

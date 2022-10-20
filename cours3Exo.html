@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            padding: 50px;
+        }
+        
+        article {
+            margin: auto;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+        
+        .link {
+            float: right;
+            margin-left: 30px;
+        }
+        
+        span {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <article id="parent">
+        <a class="link" id="child" href="#">Cliquez ici</a>
+        <p>Battle d'événement !</p>
+        Parent : <span id="parent-count">0</span> Enfant : <span id="child-count">0</span>
+    </article>
+
+</body>
+
+<script>
+    let parentClicks = 0;
+    let childClicks = 0;
+
+    document
+        .getElementById("parent")
+        .addEventListener("click", function() {
+            document
+                .getElementById("parent-count")
+                .innerText = (++parentClicks) + '';
+        });
+
+    document
+        .getElementById("child")
+        .addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            document
+                .getElementById("child-count")
+                .innerText = (++childClicks) + '';
+        });
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--     <button id="mon-lien">bouton</button> -->
+
+    <a href="cours2.html" id="mon-lien">link</a>
+    <p id="para"></p>
+
+
+</body>
+
+<script>
+    const elt = document.getElementById('mon-lien'); // On récupère l'élément sur lequel on veut détecter le clic
+    elt.addEventListener('click', function(event) { // On écoute l'événement click
+        elt.innerHTML = "C'est cliqué !"; // On change le contenu de notre élément pour afficher "C'est cliqué !"
+        event.preventDefault(); // On utilise la fonction preventDefault de notre objet event pour empêcher le comportement par défaut de cet élément lors du clic de la souris
+    });
+    /*     element.addEventListener('click', onClick); */
+
+    //empêche la propagation de l'événement vers d'autres éléments ;
+    /*     elementInterieur.addEventListener('click', function(event) {
+            event.stopPropagation();
+            elementAvecMessage.innerHTML = "Message de l'élément intérieur";
+        }); */
+
+
+
+    /*     clientX / clientY: position de la souris dans les coordonnées locales(contenu du DOM);
+
+        offsetX / offsetY: position de la souris par rapport à l 'élément sur lequel on écoute l'
+        événement;
+
+        pageX / pageY: position de la souris par rapport au document entier;
+
+        screenX / screenY: position de la souris par rapport à la fenêtre du navigateur;
+
+        movementX / movementY: position de la souris par rapport à la position de la souris lors du dernier événement mousemove */
+
+    elt.addEventListener('mousemove', function(event) {
+        const x = event.screenX; // Coordonnée X de la souris dans l'élément
+        const y = event.screenY; // Coordonnée Y de la souris dans l'élément
+        document
+            .getElementById("para")
+            .innerHTML = " x = " + x + ", y = " + y;
+    });
+</script>
+
+</html>
